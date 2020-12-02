@@ -8,5 +8,21 @@ namespace AulaPOOCelular.classes
         public bool status;
 
         
+        public bool Estado(bool status)
+        {
+            bool estado;
+            if(status == true){
+                estado = this.status;
+            }else{
+                estado = this.status;
+            }
+
+            return estado;
+        }
+
+        // public string Chamada(){
+
+        // }
     }
+
 }
