@@ -26,34 +26,59 @@ namespace AulaPOOCelular
             System.Console.WriteLine("O telefone está ligado? S/N");
             string escolha = Console.ReadLine(); 
 
-            if(escolha == "S"){
+            if(escolha == "s"){
                 telefone.status=true;
             }else{
                 telefone.status = false;
                 System.Console.WriteLine("Não é possível acessar os recursos do aparelho. Ligue e volte mais tarde");
             }
 
-
+            
             //MENU
-            int menu = 0;
+            string menu;
             do
             {
                 System.Console.WriteLine("MENU");
 
-                System.Console.WriteLine("[1] - Chamar");
-                System.Console.WriteLine("[2] - Enviar Mensagem");
+                System.Console.WriteLine("[a] - Chamar");
+                System.Console.WriteLine("[b] - Enviar Mensagem");
+                System.Console.WriteLine("[c] - Ligar Aparelho");
                 System.Console.WriteLine("[0] - Desligar Aparelho");
-                menu = int.Parse(Console.ReadLine());
+                menu = Console.ReadLine();
+
+                int numero=0;
+                int contato=0;                
+                int envio=0;
+                string texto= "s";
 
                 switch (menu)
             {
-                case 1:
-                    System.Console.WriteLine($"Ligar para");
+                case "a":
+                    if(numero == 0){
+                    System.Console.WriteLine(telefone.Chamada(numero));// repetindo o numero digitado 2X ????
+                    numero= int.Parse(Console.ReadLine());
+                    break;                   
+
+                    }else{
+                        System.Console.WriteLine("Por favor, dgite um número válido para completar a ligação!");
+                    }                   
                     break;
-                 case 2:
-                    System.Console.WriteLine($"Eviar mensagem");
+                 case "b":
+                    if (numero==0)
+                    {
+                    System.Console.WriteLine(telefone.Mensagem(contato,texto,envio));
+                    texto = Console.ReadLine(); 
                     break;
-                 case 0:
+                    
+                      
+                    }else{
+                        System.Console.WriteLine("Por favor, dgite um número válido para enviar a mensagem!");
+                    }
+                    break;
+                 case "c":
+                    System.Console.WriteLine("Ligando");
+                    break;
+                    case "0":
                     System.Console.WriteLine("Desligando");
                     break;
                 default:
@@ -61,7 +86,7 @@ namespace AulaPOOCelular
                     break;
             }
 
-            } while (menu !=0);
+            } while (menu !="0");
             
             
         }
